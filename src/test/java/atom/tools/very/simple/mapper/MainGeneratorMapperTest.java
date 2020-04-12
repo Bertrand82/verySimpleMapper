@@ -34,23 +34,29 @@ public class MainGeneratorMapperTest {
 		mapGenerate();
 	}
 	
-	public  void  mapGenerate() throws Exception {
+	public  Class  mapGenerate() throws Exception {
 		final Class clazzIn = atom.tools.very.simple.mapper.p1.Info.class;
 		final Class clazzOut = atom.tools.very.simple.mapper.p2.Info.class;
+		return mapGenerate(clazzIn, clazzOut);
+	}
+	
+	public  Class  mapGenerate(Class clazzIn, Class clazzOut) throws Exception {
 		System.out.println("MainComparator start ");
 		final GeneratorMapper generator = new GeneratorMapper(clazzOut, clazzIn);
-		File dirOutput = generator.getDirOutput();
-		assertTrue(dirOutput.exists());
-		List<File> listJavaFiles = getJavaFileFromDir(dirOutput);
+		File dirOutputMapper = generator.getDirOutput();
+		assertTrue(dirOutputMapper.exists());
+		List<File> listJavaFiles = getJavaFileFromDir(dirOutputMapper);
 		assertTrue(listJavaFiles.size() > 0);
 		for (File f : listJavaFiles) {
 			assertTrue(f.exists());
 		}
 		for (File f : listJavaFiles) {
-			String className = getClassName(dirOutput, f);			
+			String className = getClassName(dirOutputMapper, f);			
 			Class clazz = Compilator.compile(f, className);
 			assertNotNull(clazz);
+			return clazz;
 		}
+		return null;
 	}
 
 	private static String getClassName(File dirGenerated, File javaFile) {

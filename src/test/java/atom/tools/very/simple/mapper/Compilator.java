@@ -36,7 +36,12 @@ public class Compilator {
 		System.out.println("Compile Success: " + success+"   for "+className);
 
 		if (success) {
-			Class clazz = Class.forName(className);
+			Class clazz=null;
+			try {
+				clazz = Class.forName(className);
+			} catch (ClassNotFoundException e) {
+				System.out.println("ClassNotFoundException "+e.getMessage());
+			}
 			return clazz;
 		}else {
 			return null;

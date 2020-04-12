@@ -9,7 +9,7 @@ import java.util.Random;
 
 import org.junit.Test;
 
-import atom.generated.comparator.Mapper_Info;
+import atom.generated.mapper.Mapper_Info;
 import atom.generated.factory.Equals_Info;
 import atom.generated.factory.Factory_Info;
 import atom.generated.factory.ToString_Info;
