@@ -10,11 +10,7 @@ import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
 
-import atom.tools.very.simple.generator.mapper.AbstracMethodMapper;
-import atom.tools.very.simple.generator.mapper.ClassPair;
 import atom.tools.very.simple.generator.mapper.JavaPoetWriter;
-import atom.tools.very.simple.generator.mapper.MappageFailure;
-import atom.tools.very.simple.mapper.p1.Info;
 
 public class GeneratorFactory {
 
@@ -23,9 +19,14 @@ public class GeneratorFactory {
 	private JavaPoetWriter javaPoetWritter;
 	private static String packageName = "atom.generated.factory";
 	private List<GeneratorClassFactory> listClassFactory = new ArrayList();
+	final TypeSpec.Builder classBuilder;
+
+	public GeneratorFactory(Class class1) throws ClassNotFoundException {
+		this(class1,  TypeSpec.classBuilder(getClassFactoryName(class1)).addModifiers(Modifier.PUBLIC));
+	}
 	
-	public GeneratorFactory(Class<Info> class1) throws ClassNotFoundException {
-		
+	public GeneratorFactory(Class class1,TypeSpec.Builder classBuilder ) throws ClassNotFoundException {
+		this.classBuilder = classBuilder;
 		dirOutput.mkdirs();
 		this.clazzFactory = new GeneratorClassFactory(class1);
 		processClass(this.clazzFactory);
@@ -57,8 +58,7 @@ public class GeneratorFactory {
 
 	public JavaFile getJavaFileGenerator() {
 
-		final TypeSpec.Builder classBuilder = TypeSpec.classBuilder(getClassFactoryName()).addModifiers(Modifier.PUBLIC);
-
+	
 		String comment = "Cette Class propose un factory utile pour les tests \n";
 		comment += "Class : \t" + clazzFactory.getClazz().getName() + "\n";
 	
@@ -81,9 +81,9 @@ public class GeneratorFactory {
 		return javaFile;
 	}
 	
-	private String getClassFactoryName() {
+	private static String getClassFactoryName(Class c) {
 	
-			return "Factory_" + clazzFactory.getClazz().getSimpleName();
+			return "Factory_" + c.getSimpleName();
 	}
 	
 	private MethodSpec mainFactoryMethod( ) {

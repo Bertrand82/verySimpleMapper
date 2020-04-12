@@ -16,7 +16,7 @@ public class GeneratorMapper {
 	private File dirOutput = new File("GENERATED_COMPARATOR");
 	private ClassPair classPair;
 	private JavaPoetWriter javaPoetWritter;
-	private static String packageName = "atom.generated.comparator";
+	private static String packageName = "atom.generated.mapper";
 
 	public GeneratorMapper(final Class<?> clazzOut, final Class<?> clazzIn) throws ClassNotFoundException {
 		dirOutput.mkdirs();

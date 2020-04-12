@@ -2,17 +2,16 @@ package atom.tools.very.simple.generator.equals;
 
 
 import java.io.File;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.lang.model.element.Modifier;
+
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
 
 import atom.tools.very.simple.generator.mapper.JavaPoetWriter;
-import atom.tools.very.simple.mapper.p1.Info;
 
 public class GeneratorEquals {
 
@@ -21,9 +20,14 @@ public class GeneratorEquals {
 	private JavaPoetWriter javaPoetWritter;
 	private static String packageName = "atom.generated.factory";
 	private List<GeneratorClassEquals> listClassFactory = new ArrayList();
+	final TypeSpec.Builder classBuilder;
 	
-	public GeneratorEquals(Class<Info> class1) throws ClassNotFoundException {
-		
+	public GeneratorEquals(Class class1) throws ClassNotFoundException {
+		this(class1,TypeSpec.classBuilder(getClassFactoryName(class1)).addModifiers(Modifier.PUBLIC));
+
+	}
+	public GeneratorEquals(Class class1,TypeSpec.Builder classBuilder2) throws ClassNotFoundException {
+		this.classBuilder = classBuilder2;
 		dirOutput.mkdirs();
 		this.generatorClazz = new GeneratorClassEquals(class1);
 		processClass(this.generatorClazz);
@@ -55,8 +59,7 @@ public class GeneratorEquals {
 
 	public JavaFile getJavaFileGenerator() {
 
-		final TypeSpec.Builder classBuilder = TypeSpec.classBuilder(getClassFactoryName()).addModifiers(Modifier.PUBLIC);
-
+		
 		String comment = "Cette Class propose un factory utile pour les tests \n";
 		comment += "Class : \t" + generatorClazz.getClazz().getName() + "\n";
 	
@@ -81,9 +84,9 @@ public class GeneratorEquals {
 		return javaFile;
 	}
 	
-	private String getClassFactoryName() {
+	private static String getClassFactoryName(Class c) {
 	
-			return "Equals_" + generatorClazz.getClazz().getSimpleName();
+			return "Equals_" + c.getSimpleName();
 	}
 	
 	private MethodSpec mainFactoryMethod( ) {

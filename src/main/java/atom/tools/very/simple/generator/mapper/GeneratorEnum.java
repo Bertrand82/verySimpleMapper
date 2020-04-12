@@ -1,14 +1,8 @@
 package atom.tools.very.simple.generator.mapper;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.lang.model.element.Modifier;
 
 import com.squareup.javapoet.MethodSpec;
-
-import atom.tools.very.simple.mapper.p2.EnumPays;
 
 public class GeneratorEnum extends AbstracMethodMapper {
 

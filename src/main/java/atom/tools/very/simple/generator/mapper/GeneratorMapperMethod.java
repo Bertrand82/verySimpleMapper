@@ -9,8 +9,6 @@ import javax.lang.model.element.Modifier;
 
 import com.squareup.javapoet.MethodSpec;
 
-import bsh.Primitive;
-
 public class GeneratorMapperMethod extends AbstracMethodMapper {
 
 	private final List<Field> listList = new ArrayList<Field>();

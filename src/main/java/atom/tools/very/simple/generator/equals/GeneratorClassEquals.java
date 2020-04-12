@@ -6,18 +6,13 @@ import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
 
 import javax.lang.model.element.Modifier;
 
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.MethodSpec.Builder;
 
-import atom.tools.very.simple.generator.mapper.ClassPair;
-import atom.tools.very.simple.mapper.p1.EnumPays;
 import atom.tools.very.simple.mapper.p1.Info;
-import atom.tools.very.simple.util.UtilEnumeration;
-import atom.tools.very.simple.util.UtilString;
 
 public class GeneratorClassEquals {
 	public static final Class[] PRIMITIVES = { Boolean.class, Integer.class, Double.class, Float.class, Long.class };

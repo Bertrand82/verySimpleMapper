@@ -3,8 +3,6 @@ package atom.tools.very.simple.generator.mapper;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.squareup.javapoet.MethodSpec;
-
 public class ClassPair {
 
     public Class classIn;
