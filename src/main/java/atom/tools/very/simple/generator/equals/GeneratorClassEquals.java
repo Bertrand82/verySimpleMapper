@@ -12,7 +12,7 @@ import javax.lang.model.element.Modifier;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.MethodSpec.Builder;
 
-import atom.tools.very.simple.mapper.p1.Info;
+
 
 public class GeneratorClassEquals {
 	public static final Class[] PRIMITIVES = { Boolean.class, Integer.class, Double.class, Float.class, Long.class };
@@ -32,7 +32,7 @@ public class GeneratorClassEquals {
 
 	private final List<Field> listField = new ArrayList<Field>();
 
-	public GeneratorClassEquals(Class<Info> class1) {
+	public GeneratorClassEquals(Class class1) {
 		this.clazz = class1;
 		for (final Field field : clazz.getDeclaredFields()) {
 			if (field.getType().isEnum()) {

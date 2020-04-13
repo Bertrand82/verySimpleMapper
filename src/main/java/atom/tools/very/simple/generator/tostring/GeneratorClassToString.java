@@ -13,7 +13,7 @@ import javax.lang.model.element.Modifier;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.MethodSpec.Builder;
 
-import atom.tools.very.simple.mapper.p1.Info;
+
 import atom.tools.very.simple.util.UtilEnumeration;
 
 public class GeneratorClassToString {
@@ -24,7 +24,7 @@ public class GeneratorClassToString {
 	private final List<Class> listClass = new ArrayList<Class>();
 	private final List<Field> listFields = new ArrayList<Field>();
 
-	public GeneratorClassToString(Class<Info> class1) {
+	public GeneratorClassToString(Class class1) {
 		this.clazz = class1;
 		for (final Field field : clazz.getDeclaredFields()) {
 			if (getterExistForField(clazz, field)) {

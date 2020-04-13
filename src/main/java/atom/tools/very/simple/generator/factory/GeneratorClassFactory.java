@@ -13,7 +13,7 @@ import javax.lang.model.element.Modifier;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.MethodSpec.Builder;
 
-import atom.tools.very.simple.mapper.p1.Info;
+
 import atom.tools.very.simple.util.UtilEnumeration;
 import atom.tools.very.simple.util.UtilString;
 
@@ -35,7 +35,7 @@ public class GeneratorClassFactory {
 
 	private final List<Field> listField = new ArrayList<Field>();
 
-	public GeneratorClassFactory(Class<Info> class1) {
+	public GeneratorClassFactory(Class class1) {
 		this.clazz = class1;
 		for (final Field field : clazz.getDeclaredFields()) {
 			if (field.getType().isEnum()) {
