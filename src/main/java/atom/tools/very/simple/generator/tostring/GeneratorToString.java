@@ -11,7 +11,7 @@ import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
 
 import atom.tools.very.simple.generator.mapper.JavaPoetWriter;
-import atom.tools.very.simple.mapper.p1.Info;
+
 
 public class GeneratorToString {
 
@@ -21,10 +21,10 @@ public class GeneratorToString {
 	private static String packageName = "atom.generated.factory";
 	private List<GeneratorClassToString> listClassFactory = new ArrayList();
 	private final TypeSpec.Builder classBuilder ;
-	public GeneratorToString(Class<Info> class1) throws ClassNotFoundException {
+	public GeneratorToString(Class class1) throws ClassNotFoundException {
 		this(class1, TypeSpec.classBuilder(getClassFactoryName(class1)).addModifiers(Modifier.PUBLIC));
 	}
-	public GeneratorToString(Class<Info> class1, TypeSpec.Builder classBuilder2) throws ClassNotFoundException {
+	public GeneratorToString(Class class1, TypeSpec.Builder classBuilder2) throws ClassNotFoundException {
 		this.classBuilder =classBuilder2;
 		dirOutput.mkdirs();
 		this.clazzFactory = new GeneratorClassToString(class1);
