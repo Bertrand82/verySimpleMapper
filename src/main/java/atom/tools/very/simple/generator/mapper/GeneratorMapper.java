@@ -19,10 +19,12 @@ public class GeneratorMapper {
 	private static String packageName = "atom.generated.mapper";
 	
 	
-	public GeneratorMapper(String class1, String class2,File dirOut)  throws ClassNotFoundException{
-		this(getClassByName(class1), getClassByName(class2),dirOut);
+	public GeneratorMapper(String class1, String class2)  throws ClassNotFoundException{
+		this(getClassByName(class1), getClassByName(class2));
 	}
-	
+	public GeneratorMapper(String class1, String class2, File dirTarget) throws ClassNotFoundException{
+		this(getClassByName(class1), getClassByName(class2),dirTarget);
+	}
 
 	public GeneratorMapper(final Class<?> clazzOut, final Class<?> clazzIn) throws ClassNotFoundException {
 		this(clazzOut,clazzIn,new File("GENERATED_COMPARATOR"));
@@ -38,6 +40,9 @@ public class GeneratorMapper {
 		javaPoetWritter.write(getJavaFileGenerator());
 		System.err.println("Done  dirOutput exists  : " + dirOutput.exists() + " | path  : " + dirOutput.getAbsolutePath());
 	}
+
+
+
 
 	private static Class  getClassByName(String class2) throws ClassNotFoundException {
 		return GeneratorMapper.class.getClassLoader().loadClass(class2);

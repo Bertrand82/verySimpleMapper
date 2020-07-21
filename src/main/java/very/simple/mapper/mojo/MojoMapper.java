@@ -1,7 +1,5 @@
 package very.simple.mapper.mojo;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.util.List;
@@ -13,7 +11,7 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 
 import atom.tools.very.simple.generator.mapper.GeneratorMapper;
-import atom.tools.very.simple.mapper.Compilator;
+
 
 @Mojo(name = "map")
 public class MojoMapper extends AbstractMojo {
@@ -24,7 +22,7 @@ public class MojoMapper extends AbstractMojo {
 	@Parameter(property = "list.map")
 	private List<ClassesMapProperties> mapClasses;
 
-	@Parameter(defaultValue="${project.build.directory}/generated-sources/simple-mapper", required=true)
+	@Parameter(defaultValue="${project.build.directory}/generated-sources/simple-mapper", required=false)
 	private File dirTarget;
 
 	@Override
