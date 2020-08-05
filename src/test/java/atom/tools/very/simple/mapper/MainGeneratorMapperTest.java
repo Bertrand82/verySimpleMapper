@@ -50,9 +50,9 @@ public class MainGeneratorMapperTest {
 		for (File f : listJavaFiles) {
 			assertTrue(f.exists());
 		}
-		for (File f : listJavaFiles) {
-			String className = getClassName(dirOutputMapper, f);			
-			Class clazz = Compilator.compile(f, className);
+		for (File file : listJavaFiles) {
+			String className = getClassName(dirOutputMapper, file);			
+			Class clazz = Compilator.compile(file, className);
 			assertNotNull(clazz);
 			return clazz;
 		}
